@@ -16,9 +16,9 @@ export default function Header() {
         <div className="header__img"></div>
       </div>
       <div>
-        <div type="submit" class="header__upload-btn">
+        <button type="submit" class="header__upload-btn">
           Upload
-        </div>
+        </button>
       </div>
     </header>
   );

@@ -15,6 +15,13 @@ class App extends Component {
     const mainVideos = this.state.mainVideos.filter((mainVideos) => {
       return mainVideos;
     });
+
+    //
+    const videoComments = this.state.mainVideos.forEach((videoInfo) => {
+      videoInfo.comments.forEach((comments) => {
+        console.log(comments);
+      });
+    });
     const asideVideos = this.state.asideVideos.filter((asideVideos) => {
       return asideVideos;
     });
