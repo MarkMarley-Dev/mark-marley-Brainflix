@@ -1,4 +1,6 @@
 import "../Header/header.scss";
+// import variables from "../Variables/Variables.scss";
+
 export default function Header() {
   /* props;  add props in later*/
 
@@ -14,9 +16,9 @@ export default function Header() {
         <div className="header__img"></div>
       </div>
       <div>
-        <button type="submit" class="header__upload-btn">
+        <div type="submit" class="header__upload-btn">
           Upload
-        </button>
+        </div>
       </div>
     </header>
   );

@@ -1,3 +1,17 @@
+// ? Primary colors ? //
+
+$brainflixBlack: #323232;
+$brainflixBlue: #0095ff;
+$brainflixSilver: #afafaf;
+$brainflixWhite: #ffffff;
+
+// ? Secondary Colors ? //
+
+$brainflixDarkBlack: #000000;
+$brainflixDarkBlue: #0065ad;
+$brainflixMercury: #e1e1e1;
+$brainflixAlabaster: #fafafa;
+
 .header {
   display: flex;
   flex-direction: column;
@@ -20,8 +34,12 @@
     background-position: 100%;
   }
   &__search-box {
+    display: flex;
     max-height: 2.5rem;
     min-width: 15rem;
+    background-color: $brainflixAlabaster;
+    background-image: url(../../Assets/Icons/search.svg);
+    background-repeat: no-repeat;
   }
   &__img {
     background-image: url("../../Assets/Images/Mohan-muruge.jpg");
@@ -30,5 +48,10 @@
     background-size: 100%;
     background-position: 100%;
     border-radius: 100%;
+  }
+  &__upload-btn {
+    background-image: url("../../Assets/Icons/upload.svg");
+    min-width: 20rem;
+    min-height: 20rem;
   }
 }
