@@ -58,6 +58,7 @@ $huge: 1280px;
   &__video {
     max-width: 100%;
     max-height: 15rem;
+    background-color: $brainflixDarkBlack;
   }
   &__video-info {
     padding: 0 1rem;
@@ -141,6 +142,15 @@ $huge: 1280px;
   @include large {
     &__content {
       width: 100%;
+    }
+    &__video-container {
+      min-height: 15rem;
+      max-height: 15rem;
+    }
+    &__video {
+      min-width: 100%;
+      min-height: 28rem;
+      max-height: 28rem;
     }
     &__video-info {
       border-right: 1px solid $brainflixMercury;

@@ -4,14 +4,12 @@ import React from "react";
 
 export default function MainVideoContainer(props) {
   return (
-    <section>
-      <img
+    <section className="main__video-container">
+      <video
+        poster={props.mainVideos.image}
         className="main__video"
-        alt={props.mainVideos.title}
-        src={props.mainVideos.image}
-        controls="controls"
-        autoplay="false"
-      />
+        controls
+      ></video>
     </section>
   );
 }
