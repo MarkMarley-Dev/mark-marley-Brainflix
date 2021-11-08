@@ -7,6 +7,7 @@ import mainVideos from "./Assets/Data/video-details.json";
 import Header from "./Components/Header/Header";
 import MainVideoContainer from "./Components/Mainvideo/MainVideo";
 import MainVideoComments from "./Components/MainComments/MainVideoComments";
+import MainVideoItems from "./Components/MainVideoItems/MainVideoItems";
 import AsideVideos from "./Components/AsideVideos/AsideVideos";
 
 class App extends Component {
@@ -32,15 +33,18 @@ class App extends Component {
     return (
       <div>
         <Header />
-        {/* <div className="comments__aside"> */}
-        <MainVideoContainer mainVideos={this.state.mainVideo} />
 
-        <MainVideoComments videoComments={this.state.mainVideo} />
-        <AsideVideos
-          asideVideos={this.state.asideVideos}
-          handleChange={this.handleClick}
-        />
-        {/* </div> */}
+        <MainVideoContainer mainVideos={this.state.mainVideo} />
+        <div className="comments__live-video">
+          <div className="comments__aside">
+            <MainVideoItems mainVideos={this.state.mainVideo} />
+            <MainVideoComments videoComments={this.state.mainVideo} />
+          </div>
+          <AsideVideos
+            asideVideos={this.state.asideVideos}
+            handleChange={this.handleClick}
+          />
+        </div>
       </div>
       //  <div>cmainVideo={this.state.mainVideo}</div>;
       // console.log(this.state.mainVideo);

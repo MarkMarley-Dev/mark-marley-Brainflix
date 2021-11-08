@@ -8,14 +8,6 @@ import ReactPlayer from "react-player";
 export default function MainVideoItems(props) {
   return (
     <div className="main__content">
-      <img
-        className="main__video"
-        alt={props.mainVideos.title}
-        src={props.mainVideos.image}
-        controls="controls"
-        autoplay="false"
-      />
-
       <div className="main__video-info">
         <h1 className="main__title"> {props.mainVideos.title}</h1>
         <div className="main__video-stats-container">

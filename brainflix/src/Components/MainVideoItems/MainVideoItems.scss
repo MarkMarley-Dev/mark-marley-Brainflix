@@ -116,7 +116,7 @@ $huge: 1280px;
     color: $brainflixBlack;
     line-height: 1.4rem;
   }
-  @include medium() {
+  @include medium {
     &__video {
       min-width: 100%;
       min-height: 23rem;
@@ -139,8 +139,11 @@ $huge: 1280px;
     }
   }
   @include large {
-    .comments__aside {
-      display: flex;
+    &__content {
+      width: 100%;
+    }
+    &__video-info {
+      border-right: 1px solid $brainflixMercury;
     }
   }
 }

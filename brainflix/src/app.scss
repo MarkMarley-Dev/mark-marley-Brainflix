@@ -1,6 +1,20 @@
 $large: 1024px;
 $huge: 1280px;
 
+// ? Primary colors ? //
+
+$brainflixBlack: #323232;
+$brainflixBlue: #0095ff;
+$brainflixSilver: #afafaf;
+$brainflixWhite: #ffffff;
+
+// ? Secondary Colors ? //
+
+$brainflixDarkBlack: #000000;
+$brainflixDarkBlue: #0065ad;
+$brainflixMercury: #e1e1e1;
+$brainflixAlabaster: #fafafa;
+
 // ? Screen size desktop or tablet landscape //
 @mixin large {
   // media query
@@ -8,6 +22,14 @@ $huge: 1280px;
     @content;
   }
 }
-.comments__aside {
-  display: flex;
+
+@include large {
+  .comments__aside {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+  }
+  .comments__live-video {
+    display: flex;
+  }
 }

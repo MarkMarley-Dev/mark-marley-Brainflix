@@ -1,14 +1,17 @@
 import React from "react";
-import MainVideoItems from "../MainVideoItems/MainVideoItems";
+
 // import MainVideoComments from "../MainComments/MainVideoComments";
 
 export default function MainVideoContainer(props) {
-  console.log(props);
   return (
     <section>
-      <div>
-        <MainVideoItems mainVideos={props.mainVideos} />
-      </div>
+      <img
+        className="main__video"
+        alt={props.mainVideos.title}
+        src={props.mainVideos.image}
+        controls="controls"
+        autoplay="false"
+      />
     </section>
   );
 }
