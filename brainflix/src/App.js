@@ -1,5 +1,6 @@
 import "./App.css";
 import "./Components/Variables/Variables.scss";
+import "./app.scss";
 import { Component } from "react";
 import asideVideos from "./Assets/Data/videos.json";
 import mainVideos from "./Assets/Data/video-details.json";
@@ -31,14 +32,15 @@ class App extends Component {
     return (
       <div>
         <Header />
+        {/* <div className="comments__aside"> */}
         <MainVideoContainer mainVideos={this.state.mainVideo} />
-        <div className="comments__aside">
-          <MainVideoComments videoComments={this.state.mainVideo} />
-          <AsideVideos
-            asideVideos={this.state.asideVideos}
-            handleChange={this.handleClick}
-          />
-        </div>
+
+        <MainVideoComments videoComments={this.state.mainVideo} />
+        <AsideVideos
+          asideVideos={this.state.asideVideos}
+          handleChange={this.handleClick}
+        />
+        {/* </div> */}
       </div>
       //  <div>cmainVideo={this.state.mainVideo}</div>;
       // console.log(this.state.mainVideo);

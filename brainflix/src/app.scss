@@ -1,0 +1,13 @@
+$large: 1024px;
+$huge: 1280px;
+
+// ? Screen size desktop or tablet landscape //
+@mixin large {
+  // media query
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}
+.comments__aside {
+  display: flex;
+}
