@@ -1,0 +1,141 @@
+// ? Primary colors ? //
+
+$brainflixBlack: #323232;
+$brainflixBlue: #0095ff;
+$brainflixSilver: #afafaf;
+$brainflixWhite: #ffffff;
+
+// ? Secondary Colors ? //
+
+$brainflixDarkBlack: #000000;
+$brainflixDarkBlue: #0065ad;
+$brainflixMercury: #e1e1e1;
+$brainflixAlabaster: #fafafa;
+
+// ? .. Breakpoints .. ? //
+
+// ? Variable screen sizes //
+$small: 550px;
+$medium: 768px;
+$large: 1024px;
+$huge: 1280px;
+
+// ? screen size small - mobile - tablet bridge //
+@mixin small {
+  @media only screen and (min-width: $small) {
+    @content;
+  }
+}
+
+// ? screen size medium - Tablet //
+@mixin medium {
+  @media only screen and (min-width: $medium) {
+    @content;
+  }
+}
+
+// ? Screen size desktop or tablet landscape //
+@mixin large {
+  // media query
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}
+
+// ? Screen size for large desktop or high pixel resolution //
+@mixin huge {
+  // media query
+  @media only screen and (min-width: $huge) {
+    @content;
+  }
+}
+
+// ! .. Sass Styling .. ! //
+.main {
+  &__content {
+    width: 100vw;
+  }
+  &__video {
+    max-width: 100%;
+    max-height: 15rem;
+  }
+  &__video-info {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $brainflixSilver;
+    color: $brainflixBlack;
+    width: 100%;
+  }
+  &__video-stats-container {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $brainflixSilver;
+  }
+  &__video-stats-one,
+  &__video-stats-two {
+    min-width: 50%;
+  }
+  &__views-container,
+  &__likes-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__channel {
+    font-size: 1.1rem;
+    margin: 0.6rem;
+    font-weight: 550;
+    padding-bottom: 0.2rem;
+    color: $brainflixBlack;
+  }
+
+  &__timestamp {
+    font-size: 1.1rem;
+    margin: 0.6rem;
+    color: $brainflixSilver;
+  }
+
+  &__views,
+  &__likes {
+    font-size: 1.1rem;
+    margin: 0.5rem;
+    color: $brainflixSilver;
+    padding-left: 0.5rem;
+  }
+  &__views-logo,
+  &__likes-logo {
+    min-height: 1.1rem;
+  }
+  &__description {
+    font-size: 1.1rem;
+    color: $brainflixBlack;
+    line-height: 1.4rem;
+  }
+  @include medium() {
+    &__video {
+      min-width: 100%;
+      min-height: 23rem;
+      max-height: 23rem;
+    }
+    &__title {
+      font-size: 2rem;
+      border-bottom: none;
+      font-weight: 700;
+    }
+    &__video-stats-container {
+      justify-content: space-between;
+    }
+    &__video-stats-one {
+      display: flex;
+    }
+    &__video-stats-two {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

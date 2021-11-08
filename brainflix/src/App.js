@@ -5,33 +5,40 @@ import asideVideos from "./Assets/Data/videos.json";
 import mainVideos from "./Assets/Data/video-details.json";
 import Header from "./Components/Header/Header";
 import MainVideoContainer from "./Components/Mainvideo/MainVideo";
+import MainVideoComments from "./Components/MainComments/MainVideoComments";
+import AsideVideos from "./Components/AsideVideos/AsideVideos";
 
 class App extends Component {
   state = {
-    mainVideos: mainVideos,
-    asideVideos: asideVideos,
+    mainVideo: mainVideos[0],
+    asideVideos: asideVideos.filter((video) => video.id !== asideVideos[0].id),
   };
-  render() {
-    const mainVideos = this.state.mainVideos.filter((mainVideos) => {
-      return mainVideos;
-    });
 
-    //
-    const videoComments = this.state.mainVideos.forEach((videoInfo) => {
-      videoInfo.comments.forEach((comments) => {
-        console.log(comments);
-      });
+  handleClick = (id) => {
+    const newVideo = mainVideos.find((video) => video.id === id);
+    console.log("The new video..", newVideo);
+    const newAsideVideos = asideVideos.filter((video) => video.id !== id);
+    this.setState({
+      mainVideo: newVideo,
+      asideVideos: newAsideVideos,
     });
-    const asideVideos = this.state.asideVideos.filter((asideVideos) => {
-      return asideVideos;
-    });
+  };
+
+  render() {
     console.log("These are the main videos: ", mainVideos);
     console.log("These are the aside videos: ", asideVideos);
 
     return (
       <div>
         <Header />
-        <MainVideoContainer mainVideos={mainVideos} />
+        <MainVideoContainer mainVideos={this.state.mainVideo} />
+        <div className="comments__aside">
+          <MainVideoComments videoComments={this.state.mainVideo} />
+          <AsideVideos
+            asideVideos={this.state.asideVideos}
+            handleChange={this.handleClick}
+          />
+        </div>
       </div>
       //  <div>cmainVideo={this.state.mainVideo}</div>;
       // console.log(this.state.mainVideo);

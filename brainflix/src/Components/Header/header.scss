@@ -12,11 +12,50 @@ $brainflixDarkBlue: #0065ad;
 $brainflixMercury: #e1e1e1;
 $brainflixAlabaster: #fafafa;
 
+// ! .. Breakpoints .. ! //
+
+// ? Variable screen sizes //
+$small: 550px;
+$medium: 768px;
+$large: 1024px;
+$huge: 1280px;
+
+// ? screen size small - mobile - tablet bridge //
+@mixin small {
+  @media only screen and (min-width: $small) {
+    @content;
+  }
+}
+
+// ? screen size medium - Tablet //
+@mixin medium {
+  @media only screen and (min-width: $medium) {
+    @content;
+  }
+}
+
+// ? Screen size desktop or tablet landscape //
+@mixin large {
+  // media query
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}
+
+// ? Screen size for large desktop or high pixel resolution //
+@mixin huge {
+  // media query
+  @media only screen and (min-width: $huge) {
+    @content;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 0.7rem 1rem 0.7rem;
   &__middle-mobile {
     display: flex;
     flex-direction: row;
@@ -24,7 +63,14 @@ $brainflixAlabaster: #fafafa;
     padding: 0 1.6rem 1rem 1.6rem;
     width: 100%;
   }
-  &__Logo {
+
+  &__items {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__logo {
     background-image: url("../../Assets/Logo/BrainFlix-logo.svg");
     min-height: 5rem;
     min-width: 10rem;
@@ -35,13 +81,32 @@ $brainflixAlabaster: #fafafa;
   }
   &__search-box {
     display: flex;
+    align-self: flex-start;
     max-height: 2.5rem;
-    min-width: 15rem;
+    min-width: 85%;
     background-color: $brainflixAlabaster;
-    background-image: url(../../Assets/Icons/search.svg);
-    background-repeat: no-repeat;
+    background-position-x: 1rem;
+    border: 1px solid $brainflixMercury;
+    border-radius: 0.4rem;
+  }
+
+  &__search-img {
+    display: flex;
+
+    max-width: 1.5rem;
+    padding-left: 1rem;
+  }
+  &__search-txt {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 1rem;
+    min-width: 75%;
+    max-width: 20rem;
+    font-size: 1rem;
   }
   &__img {
+    display: flex;
     background-image: url("../../Assets/Images/Mohan-muruge.jpg");
     min-height: 2.8rem;
     min-width: 2.8rem; // max-width: 2.5rem;
@@ -49,9 +114,82 @@ $brainflixAlabaster: #fafafa;
     background-position: 100%;
     border-radius: 100%;
   }
+
   &__upload-btn {
-    background-image: url("../../Assets/Icons/upload.svg");
-    min-width: 20rem;
-    min-height: 20rem;
+    background-color: $brainflixBlue;
+    min-width: 100%;
+    min-width: 23rem;
+    max-height: 2.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    margin-top: 1rem;
+    // justify-content: space-between;
+  }
+  &__upload-img {
+    padding-left: 1rem;
+  }
+  &__upload-txt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+  }
+  &__upload-txt {
+    color: $brainflixWhite;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 2rem;
+  }
+
+  @include medium {
+    & {
+      display: flex;
+      flex-direction: row;
+      max-width: 100%;
+    }
+    &__items {
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: 75%;
+      margin-top: 1rem;
+      width: 100%;
+    }
+    &__logo-container {
+      display: flex;
+      min-width: 35%;
+      margin-top: 0;
+    }
+    &__logo {
+      display: flex;
+      max-width: 65%;
+      min-width: 65%;
+      min-height: 3rem;
+      max-height: 3rem;
+      //   margin-top: 0.5rem;
+    }
+    &__search-box {
+      display: flex;
+      //   margin-top: 1rem;
+      min-width: 14rem;
+      max-width: 14rem;
+      max-height: 3rem;
+      flex-wrap: nowrap;
+      align-self: center;
+    }
+    &__img {
+      display: flex;
+      order: 3;
+    }
+    &__upload-btn {
+      display: flex;
+      min-width: 25%;
+      max-height: 3rem;
+      align-self: center;
+      margin-top: 0;
+    }
+  }
+  &__search-txt {
+    font-size: 0.9rem;
   }
 }

@@ -1,0 +1,196 @@
+// ? Primary colors ? //
+
+$brainflixBlack: #323232;
+$brainflixBlue: #0095ff;
+$brainflixSilver: #afafaf;
+$brainflixWhite: #ffffff;
+
+// ? Secondary Colors ? //
+
+$brainflixDarkBlack: #000000;
+$brainflixDarkBlue: #0065ad;
+$brainflixMercury: #e1e1e1;
+$brainflixAlabaster: #fafafa;
+
+// ! .. Breakpoints .. ! //
+
+// ? Variable screen sizes //
+$small: 550px;
+$medium: 768px;
+$large: 1024px;
+$huge: 1280px;
+
+// ? screen size small - mobile - tablet bridge //
+@mixin small {
+  @media only screen and (min-width: $small) {
+    @content;
+  }
+}
+
+// ? screen size medium - Tablet //
+@mixin medium {
+  @media only screen and (min-width: $medium) {
+    @content;
+  }
+}
+
+// ? Screen size desktop or tablet landscape //
+@mixin large {
+  // media query
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}
+
+// ? Screen size for large desktop or high pixel resolution //
+@mixin huge {
+  // media query
+  @media only screen and (min-width: $huge) {
+    @content;
+  }
+}
+
+.comments {
+  &__section {
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $brainflixSilver;
+  }
+  &__add-comment {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    min-width: 85%;
+  }
+  &__number {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  &__logo {
+    background-image: url("../../Assets/Images/Mohan-muruge.jpg");
+    min-height: 2.2rem;
+    max-height: 2.2rem;
+    max-width: 2.2rem;
+    min-width: 2.2rem; // max-width: 2.5rem;
+    background-size: 100%;
+    background-position: 100%;
+    border-radius: 100%;
+    margin-top: 2.5rem;
+  }
+  &__title {
+    font-size: 1rem;
+    color: $brainflixSilver;
+    padding-left: 0.5rem;
+  }
+  &__input {
+    display: flex;
+    align-items: flex-start;
+    min-height: 6rem;
+    min-width: 100%;
+    border: 1px solid $brainflixSilver;
+    background-color: $brainflixAlabaster;
+    border-radius: 0.4rem;
+    padding: 0;
+  }
+
+  &__add-btn {
+    margin-top: 1rem;
+    background-color: $brainflixBlue;
+    min-width: 89%;
+    max-height: 2.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+  }
+  &__add-img {
+    padding-left: 1rem;
+  }
+  &__add-txt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+  }
+  &__add-txt {
+    color: $brainflixWhite;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 2rem;
+  }
+  &__box {
+    display: flex;
+    margin: 0;
+    border-bottom: 1px solid $brainflixSilver;
+    padding-bottom: 0.5rem;
+  }
+  &__default-img {
+    background-image: url("../../Assets/Images/Mohan-muruge.jpg");
+    min-height: 2.2rem;
+    max-height: 2.2rem;
+    max-width: 2.2rem;
+    min-width: 2.2rem; // max-width: 2.5rem;
+    background-size: 100%;
+    background-position: 100%;
+    border-radius: 100%;
+    margin-top: 0.6rem;
+  }
+  &__name-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.6rem 0 0.6rem 0.6rem;
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+  &__timestamp {
+    margin: 0;
+    font-size: 0.75rem;
+    color: $brainflixSilver;
+  }
+
+  &__description {
+    margin-left: 0.6rem;
+    font-size: 0.8rem;
+  }
+  @include medium {
+    &__number {
+      font-size: 1rem;
+    }
+
+    &__add-comment {
+      min-width: 93%;
+    }
+    &__add-inputs {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__container {
+      min-width: 100%;
+      max-width: 100%;
+    }
+    &__input {
+      min-width: 70%;
+      min-height: 2.5rem;
+      max-height: 2.5rem;
+      margin-right: 2rem;
+    }
+    &__add-btn {
+      min-width: 10%;
+
+      max-height: 2.5rem;
+      margin: 0;
+    }
+  }
+}
