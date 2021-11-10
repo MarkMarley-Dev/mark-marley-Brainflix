@@ -8,13 +8,19 @@ import MainVideoContainer from "./Components/Mainvideo/MainVideo";
 import MainVideoComments from "./Components/MainComments/MainVideoComments";
 import MainVideoItems from "./Components/MainVideoItems/MainVideoItems";
 import AsideVideos from "./Components/AsideVideos/AsideVideos";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
+import { ApiUrl, ApiKey } from "../src/Components/Utils/api";
 
 class App extends Component {
   state = {
     mainVideo: mainVideos[0],
     asideVideos: asideVideos.filter((video) => video.id !== asideVideos[0].id),
   };
+
+  getVideoData = axios.get(`${ApiUrl}/videos${ApiKey}`).then((response) => {
+    return console.log("This is response data", response.data);
+  });
 
   handleClick = (id) => {
     const newVideo = mainVideos.find((video) => video.id === id);
@@ -31,25 +37,27 @@ class App extends Component {
     console.log("These are the aside videos: ", asideVideos);
 
     return (
-      <div>
-        <Header />
-        <Switch>
-          <Route path="/header" component={Header} />
-        </Switch>
-        <MainVideoContainer mainVideos={this.state.mainVideo} />
-        <div className="comments__live-video">
-          <div className="comments__aside">
-            <MainVideoItems mainVideos={this.state.mainVideo} />
-            <MainVideoComments videoComments={this.state.mainVideo} />
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path="/home" component={MainVideoContainer}></Route>
+            {/* <Route */}
+          </Switch>
+          <Header />
+
+          <MainVideoContainer mainVideos={this.state.mainVideo} />
+          <div className="comments__live-video">
+            <div className="comments__aside">
+              <MainVideoItems mainVideos={this.state.mainVideo} />
+              <MainVideoComments videoComments={this.state.mainVideo} />
+            </div>
+            <AsideVideos
+              asideVideos={this.state.asideVideos}
+              handleChange={this.handleClick}
+            />
           </div>
-          <AsideVideos
-            asideVideos={this.state.asideVideos}
-            handleChange={this.handleClick}
-          />
         </div>
-      </div>
-      //  <div>cmainVideo={this.state.mainVideo}</div>;
-      // console.log(this.state.mainVideo);
+      </BrowserRouter>
     );
   }
 }
