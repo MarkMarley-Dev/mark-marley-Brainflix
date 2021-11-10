@@ -1,4 +1,3 @@
-import "./App.css";
 import "./Components/Variables/Variables.scss";
 import "./app.scss";
 import { Component } from "react";
@@ -9,6 +8,7 @@ import MainVideoContainer from "./Components/Mainvideo/MainVideo";
 import MainVideoComments from "./Components/MainComments/MainVideoComments";
 import MainVideoItems from "./Components/MainVideoItems/MainVideoItems";
 import AsideVideos from "./Components/AsideVideos/AsideVideos";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -33,7 +33,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-
+        <Switch>
+          <Route path="/header" component={Header} />
+        </Switch>
         <MainVideoContainer mainVideos={this.state.mainVideo} />
         <div className="comments__live-video">
           <div className="comments__aside">

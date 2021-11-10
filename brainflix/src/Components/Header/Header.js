@@ -4,13 +4,16 @@ import "../Header/header.scss";
 import "../Variables/Variables.scss";
 import headerLogo from "../../Assets/Icons/upload.svg";
 import headerSearchimg from "../../Assets/Icons/search.svg";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   /* props;  add props in later*/
 
   return (
     <header className="header">
+      {/* <Link to=""> */}
       <div className="header__logo-container">
+        {/* </Link> */}
         <div className="header__logo"></div>
       </div>
       <div className="header__items">
