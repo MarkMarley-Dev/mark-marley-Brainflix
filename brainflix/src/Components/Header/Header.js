@@ -6,7 +6,7 @@ import headerLogo from "../../Assets/Icons/upload.svg";
 import headerSearchimg from "../../Assets/Icons/search.svg";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function PageHeader() {
   /* props;  add props in later*/
 
   return (
