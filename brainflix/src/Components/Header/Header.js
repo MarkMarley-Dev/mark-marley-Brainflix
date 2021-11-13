@@ -11,11 +11,9 @@ export default function PageHeader() {
 
   return (
     <header className="header">
-      {/* <Link to=""> */}
-      <div className="header__logo-container">
-        {/* </Link> */}
+      <Link to="/" className="header__logo-container">
         <div className="header__logo"></div>
-      </div>
+      </Link>
       <div className="header__items">
         <div className="header__search-box">
           <img
