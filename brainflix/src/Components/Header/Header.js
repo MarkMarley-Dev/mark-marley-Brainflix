@@ -18,25 +18,22 @@ export default function PageHeader() {
         <div className="header__search-box">
           <img
             className="header__search-img"
-            alt="Search Image"
+            alt="Search Logo"
             src={headerSearchimg}
           />
           <p className="header__search-txt"> Search </p>
         </div>
         <div className="header__img"></div>
-
-        <div>
-          <div className="header__upload-btn">
-            <img
-              className="header__upload-img"
-              alt="Upload Image"
-              src={headerLogo}
-            />
-            <div className="header__upload-txt-container">
-              <p className="header__upload-txt"> Upload</p>
-            </div>
+        <Link to="/upload" className="header__upload-btn">
+          <img
+            className="header__upload-img"
+            alt="Upload Logo"
+            src={headerLogo}
+          />
+          <div className="header__upload-txt-container">
+            <p className="header__upload-txt"> Upload</p>
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );

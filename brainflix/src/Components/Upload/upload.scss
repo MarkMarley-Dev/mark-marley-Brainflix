@@ -1,0 +1,85 @@
+// ? Primary colors ? //
+
+$brainflixBlack: #323232;
+$brainflixBlue: #0095ff;
+$brainflixSilver: #afafaf;
+$brainflixWhite: #ffffff;
+
+// ? Secondary Colors ? //
+
+$brainflixDarkBlack: #000000;
+$brainflixDarkBlue: #0065ad;
+$brainflixMercury: #e1e1e1;
+
+$brainflixAlabaster: #fafafa;
+
+// ? .. Breakpoints .. ? //
+
+// ? Variable screen sizes //
+$small: 550px;
+$medium: 768px;
+$large: 1024px;
+$huge: 1280px;
+
+// ? screen size small - mobile - tablet bridge //
+@mixin small {
+  @media only screen and (min-width: $small) {
+    @content;
+  }
+}
+
+// ? screen size medium - Tablet //
+@mixin medium {
+  @media only screen and (min-width: $medium) {
+    @content;
+  }
+}
+
+// ? Screen size desktop or tablet landscape //
+@mixin large {
+  // media query
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}
+
+// ? Screen size for large desktop or high pixel resolution //
+@mixin huge {
+  // media query
+  @media only screen and (min-width: $huge) {
+    @content;
+  }
+}
+
+.header {
+  border-bottom: 1px solid $brainflixMercury;
+}
+
+.form {
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: $brainflixBlack;
+    width: 100%;
+  }
+  &__thumbnail {
+    &-title {
+      color: $brainflixSilver;
+      font-size: 1rem;
+    }
+    &__thumbnail-img {
+      background-image: url("../../Assets/");
+    }
+  }
+  &__title-placholder-txt {
+    display: flex;
+    align-self: flex-start;
+    min-height: 2rem;
+    max-height: 2.5rem;
+    min-width: 100%;
+    background-color: #fafafa;
+    background-position-x: 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+  }
+}

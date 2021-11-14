@@ -1,10 +1,10 @@
 import React from "react";
 import commentSvg from "../../Assets/Icons/add_comment.svg";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+// import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Component } from "react";
 import axios from "axios";
 import { ApiUrl, ApiKey, singleVideoId } from "../Utils/api";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import AsideVideos from "../AsideVideos/AsideVideos";
 import PageHeader from "../Header/Header";
 import "../MainVideoItems/mainVideoItems.scss";
@@ -24,6 +24,7 @@ export default class MainVideoItem extends Component {
             (video) => video !== response.data.id
           ),
         });
+        console.log(response);
       });
     }
     axios.get(`${ApiUrl}/videos/${ApiKey}`).then((response) =>
@@ -36,19 +37,19 @@ export default class MainVideoItem extends Component {
 
   componentDidUpdate(prevProps) {
     const { videoId } = this.props.match.params;
-    console.log(this.prevProps);
+    console.log(prevProps);
+    console.log(videoId);
 
     if (prevProps.match.params.videoId !== videoId) {
       singleVideoId(videoId).then((response) => {
+        console.log(response.data);
         this.setState({
           mainVideo: response.data,
           asideVideo: this.state.asideVideo.filter(
-            (video) => video !== response.data.id
+            (video) => video.id !== response.data.id
           ),
         });
       });
-
-      console.log(this.state.mainVideo);
     }
   }
   render() {
@@ -88,7 +89,7 @@ export default class MainVideoItem extends Component {
                 <div className="comments__add-btn">
                   <img
                     className="comments__add-img"
-                    alt="Upload Image"
+                    alt="Upload Logo"
                     src={commentSvg}
                   />
                   <div className="comments__add-txt-container">
@@ -123,14 +124,30 @@ export default class MainVideoItem extends Component {
     );
   }
 }
-// export default function MainVideoContainer(props) {
-//   return (
-//     <section className="main__video-container">
-//       <video
-//         poster={props.mainVideos.image}
-//         className="main__video"
-//         controls
-//       ></video>
-//     </section>
-//   );
+
+// componentDidUpdate(prevProps) {
+//   const { videoId } = this.props.match.params;
+//   console.log(videoId);
+//   console.log(prevProps);
+//   // if (prevProps.match.params !== videoId) {
+//   //   singleVideoId(videoId).then((response) => {
+//   //     this.setState({
+//   //       mainVideo: response.data,
+//   //       asideVideo: this.state.asideVideo.filter((video) => {
+//   //         video !== response.data.id;
+//   //       }),
+//   //     });
+//   //   });
+//   // }
+//   // if (prevProps.match.params.video)
+//   if (prevProps.match.params.videoId !== videoId) {
+//     singleVideoId(videoId).then((response) => {
+//       this.setState({
+//         mainVideo: response.data,
+//         asideVideo: this.state.asideVideo.filter(
+//           (video) => video !== response.data.id
+//         ),
+//       });
+//     });
+//   }
 // }
