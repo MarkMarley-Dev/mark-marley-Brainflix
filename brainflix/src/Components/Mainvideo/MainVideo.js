@@ -3,7 +3,7 @@ import commentSvg from "../../Assets/Icons/add_comment.svg";
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Component } from "react";
 import axios from "axios";
-import { ApiUrl, ApiKey, singleVideoId } from "../Utils/api";
+import { ApiUrl, ApiKey, singleVideoId, ApiFullVideoList } from "../Utils/api";
 // import { render } from "react-dom";
 import AsideVideos from "../AsideVideos/AsideVideos";
 import PageHeader from "../Header/Header";
@@ -15,7 +15,7 @@ export default class MainVideoItem extends Component {
     asideVideo: [],
   };
   componentDidMount() {
-    const { videoId } = this.props.match.params;
+    const { videoId } = this.props.match.params.id;
     if (videoId) {
       singleVideoId(videoId).then((response) => {
         this.setState({
@@ -27,12 +27,18 @@ export default class MainVideoItem extends Component {
         console.log(response);
       });
     }
-    axios.get(`${ApiUrl}/videos/${ApiKey}`).then((response) =>
-      this.setState({
-        mainVideo: response.data[0],
-        asideVideo: response.data.filter((video) => video !== response.data[0]),
-      })
-    );
+    if (!videoId) {
+      // let videoIdMain
+      axios.get(`${ApiUrl}/videos/${ApiKey}`).then((response) =>
+        // videoIdMain = response.data[0];
+        this.setState({
+          mainVideo: response.data[0],
+          asideVideo: response.data.filter(
+            (video) => video !== response.data[0]
+          ),
+        })
+      );
+    }
   }
 
   componentDidUpdate(prevProps) {

@@ -51,27 +51,53 @@ $huge: 1280px;
   }
 }
 
-.header {
-  border-bottom: 1px solid $brainflixMercury;
+.upload__section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-width: 98%;
+  max-width: 98%;
+  border: 0;
 }
-
 .form {
+  width: 97%;
+
   &__title {
-    font-size: 1.6rem;
+    display: flex;
+    align-self: center;
+    font-size: 1.4rem;
     line-height: 2rem;
     color: $brainflixBlack;
+
     width: 100%;
+    padding-top: 1rem;
+
+    border-top: 1px solid $brainflixMercury;
   }
   &__thumbnail {
     &-title {
       color: $brainflixSilver;
       font-size: 1rem;
+      font-weight: 600;
     }
-    &__thumbnail-img {
-      background-image: url("../../Assets/");
+    &-video-container {
+      width: fit-content;
+    }
+    &-video {
+      max-width: 21.5rem;
+      border-radius: 4px;
     }
   }
+  &__placeholder-video-title,
+  &__placeholder-description-title {
+    color: $brainflixSilver;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
   &__title-placholder-txt {
+    color: $brainflixBlack;
     display: flex;
     align-self: flex-start;
     min-height: 2rem;
@@ -82,4 +108,75 @@ $huge: 1280px;
     border: 1px solid #e1e1e1;
     border-radius: 4px;
   }
+  &__description-placholder-txt {
+    text-decoration-color: blue;
+    display: flex;
+    align-content: flex-start;
+    min-height: 5rem;
+    max-height: 2.5rem;
+    min-width: 100%;
+    background-color: #fafafa;
+    background-position-x: 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+  }
+  &__cancel-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    min-height: 3rem;
+  }
+  &__cancel-btn-txt {
+    color: $brainflixBlue;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-right: 1.2rem;
+  }
+
+  @include medium {
+    &__title {
+      border-top: 0;
+      font-size: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $brainflixMercury;
+      margin-bottom: 1.5rem;
+    }
+    &__thumbnail-ctn {
+      padding-top: 0;
+    }
+    &__thumbnail-video {
+      max-width: 25rem;
+    }
+    &__btn-container {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+    &__cancel-btn {
+      order: 1;
+      width: 40%;
+    }
+    &__description-placholder-txt,
+    &__title-placholder-txt {
+      padding-left: 1rem;
+    }
+  }
+}
+@include medium {
+  .header {
+    border-bottom: 1px solid $brainflixMercury;
+    &__upload-btn {
+      order: 2;
+      // width: 30%;
+    }
+  }
+  .upload__section {
+    align-items: flex-start;
+  }
+}
+// ? .. Placer holder .. ? \\
+
+::-webkit-input-placeholder {
+  color: $brainflixBlack;
 }

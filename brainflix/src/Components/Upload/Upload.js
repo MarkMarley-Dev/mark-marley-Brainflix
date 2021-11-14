@@ -3,7 +3,7 @@ import PageHeader from "../Header/Header";
 import "../Header/header.scss";
 import "./upload.scss";
 import PublishLogo from "../../Assets/Icons/publish.svg";
-
+import RandomVideoImg from "../../Assets/Images/Upload-video-preview.jpg";
 class UploadForm extends Component {
   state = {
     formTitle: "",
@@ -53,11 +53,17 @@ class UploadForm extends Component {
         <header>
           <PageHeader />
         </header>
-        <section>
+        <section className="upload__section">
           <h1 className="form__title"> Upload Video </h1>
           <div className="form__thumbnail-ctn">
             <p className="form__thumbnail-title">Video Thumbnail</p>
-            <div className="form__thumbnail-img" alt="Video Thumbnail"></div>
+            <div className="form__thumbnail-video-container">
+              <img
+                className="form__thumbnail-video"
+                src={RandomVideoImg}
+                alt="Random Cylcing Video"
+              />
+            </div>
           </div>
           <form className="form" onSubmit={this.handleSubmit}>
             <label>
@@ -86,9 +92,6 @@ class UploadForm extends Component {
             </label>
           </form>
           <div className="form__btn-container">
-            <div>
-              <p className="form__cancel-btn">Cancel</p>
-            </div>
             <div className="header__upload-btn">
               <img
                 className="header__upload-img"
@@ -98,6 +101,9 @@ class UploadForm extends Component {
               <div className="header__upload-txt-container">
                 <p className="header__upload-txt"> Publish</p>
               </div>
+            </div>
+            <div className="form__cancel-btn">
+              <p className="form__cancel-btn-txt">Cancel</p>
             </div>
           </div>
         </section>
