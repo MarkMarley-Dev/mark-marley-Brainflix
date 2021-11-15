@@ -55,11 +55,13 @@ export default class MainVideoItem extends Component {
 
     if (prevProps.match.params.videoId !== videoId) {
       singleVideoId(videoId).then((response) => {
-        // get side videos data
+        this.setState({
+          mainVideo: response.data,
+        });
+
         ApiFullVideoList().then((response) => {
           this.setState({
             asideVideo: response.data.filter((video) => video.id !== videoId),
-            mainVideo: response.data,
           });
         });
         returnComments(videoId).then((response) => {
