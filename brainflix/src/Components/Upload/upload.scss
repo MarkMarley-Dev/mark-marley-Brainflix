@@ -168,11 +168,35 @@ $huge: 1280px;
     border-bottom: 1px solid $brainflixMercury;
     &__upload-btn {
       order: 2;
-      // width: 30%;
     }
   }
   .upload__section {
     align-items: flex-start;
+  }
+}
+@include large {
+  .upload__main {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $brainflixMercury;
+    width: 100%;
+  }
+  .form {
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+
+    &__placeholder-video-title,
+    &__placeholder-description-title {
+      color: $brainflixSilver;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    &__cancel-btn {
+      padding-top: 0;
+    }
+    &__btn-container {
+      padding-top: 1rem;
+    }
   }
 }
 // ? .. Placer holder .. ? \\

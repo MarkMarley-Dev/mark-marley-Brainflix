@@ -55,42 +55,44 @@ class UploadForm extends Component {
         </header>
         <section className="upload__section">
           <h1 className="form__title"> Upload Video </h1>
-          <div className="form__thumbnail-ctn">
-            <p className="form__thumbnail-title">Video Thumbnail</p>
-            <div className="form__thumbnail-video-container">
-              <img
-                className="form__thumbnail-video"
-                src={RandomVideoImg}
-                alt="Random Cylcing Video"
-              />
+          <div className="upload__main">
+            <div className="form__thumbnail-ctn">
+              <p className="form__thumbnail-title">Video Thumbnail</p>
+              <div className="form__thumbnail-video-container">
+                <img
+                  className="form__thumbnail-video"
+                  src={RandomVideoImg}
+                  alt="Random Cylcing Video"
+                />
+              </div>
             </div>
+            <form className="form" onSubmit={this.handleSubmit}>
+              <label>
+                <h3 className="form__placeholder-video-title">
+                  TITLE TO YOUR VIDEO
+                </h3>
+                <input
+                  className="form__title-placholder-txt"
+                  type="text"
+                  name="title"
+                  onChange={this.handleChange}
+                  placeholder="Add a title to your video"
+                />
+              </label>
+              <label>
+                <h3 className="form__placeholder-description-title">
+                  ADD A VIDEO DESCRIPTION{" "}
+                </h3>
+                <input
+                  className="form__description-placholder-txt"
+                  type="text"
+                  name="description"
+                  onChange={this.handleChange}
+                  placeholder="Add a description to your video"
+                />
+              </label>
+            </form>
           </div>
-          <form className="form" onSubmit={this.handleSubmit}>
-            <label>
-              <h3 className="form__placeholder-video-title">
-                TITLE TO YOUR VIDEO
-              </h3>
-              <input
-                className="form__title-placholder-txt"
-                type="text"
-                name="title"
-                onChange={this.handleChange}
-                placeholder="Add a title to your video"
-              />
-            </label>
-            <label>
-              <h3 className="form__placeholder-description-title">
-                ADD A VIDEO DESCRIPTION{" "}
-              </h3>
-              <input
-                className="form__description-placholder-txt"
-                type="text"
-                name="description"
-                onChange={this.handleChange}
-                placeholder="Add a description to your video"
-              />
-            </label>
-          </form>
           <div className="form__btn-container">
             <div className="header__upload-btn">
               <img
