@@ -4,6 +4,7 @@ import "../Header/header.scss";
 import "./upload.scss";
 import PublishLogo from "../../Assets/Icons/publish.svg";
 import RandomVideoImg from "../../Assets/Images/Upload-video-preview.jpg";
+import { Link } from "react-router-dom";
 class UploadForm extends Component {
   state = {
     formTitle: "",
@@ -93,8 +94,9 @@ class UploadForm extends Component {
               </label>
             </form>
           </div>
+
           <div className="form__btn-container">
-            <div className="header__upload-btn">
+            <Link to="/" className="header__upload-btn">
               <img
                 className="header__upload-img"
                 alt="Publish Logo"
@@ -103,7 +105,7 @@ class UploadForm extends Component {
               <div className="header__upload-txt-container">
                 <p className="header__upload-txt"> Publish</p>
               </div>
-            </div>
+            </Link>
             <div className="form__cancel-btn">
               <p className="form__cancel-btn-txt">Cancel</p>
             </div>

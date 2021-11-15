@@ -1,12 +1,9 @@
 import "./Components/Variables/Variables.scss";
 import "./app.scss";
-// import { Component } from "react";
+import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
 import MainVideoItem from "./Components/Mainvideo/MainVideo";
 import UploadForm from "./Components/Upload/Upload";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-// import axios from "axios";
-// import { ApiUrl, ApiKey } from "../src/Components/Utils/api";
-// import { render } from "react-dom";
 
 function App() {
   return (

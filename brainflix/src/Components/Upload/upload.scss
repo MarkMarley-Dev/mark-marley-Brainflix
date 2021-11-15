@@ -109,7 +109,6 @@ $huge: 1280px;
     border-radius: 4px;
   }
   &__description-placholder-txt {
-    text-decoration-color: blue;
     display: flex;
     align-content: flex-start;
     min-height: 5rem;
@@ -152,6 +151,7 @@ $huge: 1280px;
       display: flex;
       justify-content: flex-end;
       width: 100%;
+      text-decoration: none;
     }
     &__cancel-btn {
       order: 1;
@@ -193,11 +193,17 @@ $huge: 1280px;
     }
     &__cancel-btn {
       padding-top: 0;
+      width: 30%;
     }
     &__btn-container {
       padding-top: 1rem;
+      max-width: 100%;
     }
   }
+}
+
+.header__upload-btn {
+  text-decoration: none;
 }
 // ? .. Placer holder .. ? \\
 
