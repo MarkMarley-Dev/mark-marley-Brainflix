@@ -59,11 +59,14 @@ export default class MainVideoItem extends Component {
         ApiFullVideoList().then((response) => {
           this.setState({
             asideVideo: response.data.filter((video) => video.id !== videoId),
+            mainVideo: response.data,
           });
         });
-        this.setState({
-          mainVideo: response.data,
-          //  comments: response.data,
+        returnComments(videoId).then((response) => {
+          console.log("comments test!!", response.data);
+          this.setState({
+            comments: response.data.comments,
+          });
         });
       });
     }
