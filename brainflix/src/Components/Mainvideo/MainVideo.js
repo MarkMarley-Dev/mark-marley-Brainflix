@@ -7,7 +7,7 @@ import { ApiUrl, ApiKey, singleVideoId, ApiFullVideoList } from "../Utils/api";
 // import { render } from "react-dom";
 import AsideVideos from "../AsideVideos/AsideVideos";
 import PageHeader from "../Header/Header";
-import "../MainVideoItems/mainVideoItems.scss";
+import "./mainVideoItems.scss";
 import "./mainVideo.scss";
 export default class MainVideoItem extends Component {
   state = {
@@ -15,7 +15,7 @@ export default class MainVideoItem extends Component {
     asideVideo: [],
   };
   componentDidMount() {
-    const { videoId } = this.props.match.params.id;
+    const { videoId } = this.props.match.params;
     if (videoId) {
       singleVideoId(videoId).then((response) => {
         this.setState({
@@ -72,7 +72,9 @@ export default class MainVideoItem extends Component {
           <PageHeader />
         </header>
         <div>
-          <img className="main__video" src={image} alt={title} />
+          <video className="main__video" poster={image} alt={title} controls>
+            {" "}
+          </video>
         </div>
         <h1>{title}</h1>
         <div>
@@ -105,22 +107,22 @@ export default class MainVideoItem extends Component {
               </div>
             </div>
           </div>
-          {/* {this.state.videoId.comments.map((comment) => {
-            return ( */}
-          {/* <div className="comments__box">
-            <div className="comments__default-img"> </div>
-            <div>
-              <span className="comments__name-date">
-                <p className="comments__name">{comment.name}</p>
-                <p className="comments__timestamp">
-                  {new Date(comment.timestamp).toLocaleDateString("en-US")}
-                </p>
-              </span>
-              <p className="comments__description">{comment.comment}</p>
-            </div>
-          </div> */}
-          );
-          {/* })} */}
+          {/* {this.state.mainVideo.comments.map((comment) => {
+            return (
+              <div className="comments__box">
+                <div className="comments__default-img"> </div>
+                <div>
+                  <span className="comments__name-date">
+                    <p className="comments__name">{comment.name}</p>
+                    <p className="comments__timestamp">
+                      {new Date(comment.timestamp).toLocaleDateString("en-US")}
+                    </p>
+                  </span>
+                  <p className="comments__description">{comment.comment}</p>
+                </div>
+              </div>
+            );
+          })} */}
         </section>
 
         <aside>
@@ -130,30 +132,3 @@ export default class MainVideoItem extends Component {
     );
   }
 }
-
-// componentDidUpdate(prevProps) {
-//   const { videoId } = this.props.match.params;
-//   console.log(videoId);
-//   console.log(prevProps);
-//   // if (prevProps.match.params !== videoId) {
-//   //   singleVideoId(videoId).then((response) => {
-//   //     this.setState({
-//   //       mainVideo: response.data,
-//   //       asideVideo: this.state.asideVideo.filter((video) => {
-//   //         video !== response.data.id;
-//   //       }),
-//   //     });
-//   //   });
-//   // }
-//   // if (prevProps.match.params.video)
-//   if (prevProps.match.params.videoId !== videoId) {
-//     singleVideoId(videoId).then((response) => {
-//       this.setState({
-//         mainVideo: response.data,
-//         asideVideo: this.state.asideVideo.filter(
-//           (video) => video !== response.data.id
-//         ),
-//       });
-//     });
-//   }
-// }
