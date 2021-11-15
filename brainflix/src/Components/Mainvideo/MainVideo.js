@@ -3,7 +3,13 @@ import commentSvg from "../../Assets/Icons/add_comment.svg";
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Component } from "react";
 import axios from "axios";
-import { ApiUrl, ApiKey, singleVideoId, ApiFullVideoList } from "../Utils/api";
+import {
+  ApiUrl,
+  ApiKey,
+  singleVideoId,
+  ApiFullVideoList,
+  returnComments,
+} from "../Utils/api";
 // import { render } from "react-dom";
 import AsideVideos from "../AsideVideos/AsideVideos";
 import PageHeader from "../Header/Header";
@@ -12,60 +18,73 @@ import "./mainVideo.scss";
 export default class MainVideoItem extends Component {
   state = {
     mainVideo: null,
+    comments: [],
     asideVideo: [],
   };
-  componentDidMount() {
-    const { videoId } = this.props.match.params;
-    if (videoId) {
-      singleVideoId(videoId).then((response) => {
-        this.setState({
-          mainVideo: response.data,
-          asideVideo: this.state.asideVideo.filter(
-            (video) => video !== response.data.id
-          ),
-        });
+  componentDidMount(props) {
+    let mainVideo = {};
+    let asideVideo = [];
+
+    ApiFullVideoList()
+      .then((response) => {
+        mainVideo = response.data[0];
+        asideVideo = response.data.filter(
+          (video) => video !== response.data[0]
+        );
         console.log(response);
+      })
+      .then(() => {
+        returnComments(mainVideo.id).then((response) => {
+          console.log("comments test!!", response.data);
+          this.setState({
+            mainVideo: mainVideo,
+            comments: response.data.comments,
+            asideVideo: asideVideo,
+          });
+        });
       });
-    }
-    if (!videoId) {
-      // let videoIdMain
-      axios.get(`${ApiUrl}/videos/${ApiKey}`).then((response) =>
-        // videoIdMain = response.data[0];
-        this.setState({
-          mainVideo: response.data[0],
-          asideVideo: response.data.filter(
-            (video) => video !== response.data[0]
-          ),
-        })
-      );
-    }
   }
 
-  componentDidUpdate(prevProps) {
-    const { videoId } = this.props.match.params;
-    console.log(prevProps);
-    console.log(videoId);
+  componentDidUpdate(prevProps, prevState) {
+    let videoId = this.props.match.params.videoId;
+    console.log("comment update this props test", videoId);
+    console.log(
+      "comment update this prevprops test",
+      prevProps.match.params.videoId
+    );
 
     if (prevProps.match.params.videoId !== videoId) {
       singleVideoId(videoId).then((response) => {
-        console.log(response.data);
+        // get side videos data
+        ApiFullVideoList().then((response) => {
+          this.setState({
+            asideVideo: response.data.filter((video) => video.id !== videoId),
+          });
+        });
         this.setState({
           mainVideo: response.data,
-          asideVideo: this.state.asideVideo.filter(
-            (video) => video.id !== response.data.id
-          ),
+          //  comments: response.data,
         });
       });
     }
   }
   render() {
     console.log(this.state.mainVideo);
+    console.log(this.state.comments);
     if (!this.state.mainVideo) {
       return <main> Loading Video...</main>;
     }
-    const { image, title, channel, timestamp, views, likes, description } =
-      this.state.mainVideo;
-
+    const {
+      image,
+      title,
+      channel,
+      timestamp,
+      views,
+      likes,
+      description,
+      comments,
+    } = this.state.mainVideo;
+    console.log(this.state.mainVideo);
     return (
       <main>
         <header>
@@ -82,8 +101,12 @@ export default class MainVideoItem extends Component {
           {views} {likes}
         </div>
         {description}
+
         <section className="comments__section">
-          <p className="comments__number">3 Comments</p>
+          <p className="comments__number">
+            {this.state.comments.length} Comments
+          </p>
+
           <div className="comments__container">
             <div className="comments__logo"></div>
             <div className="comments__add-comment">
@@ -107,7 +130,7 @@ export default class MainVideoItem extends Component {
               </div>
             </div>
           </div>
-          {/* {this.state.mainVideo.comments.map((comment) => {
+          {this.state.comments.map((comment) => {
             return (
               <div className="comments__box">
                 <div className="comments__default-img"> </div>
@@ -122,7 +145,7 @@ export default class MainVideoItem extends Component {
                 </div>
               </div>
             );
-          })} */}
+          })}
         </section>
 
         <aside>
