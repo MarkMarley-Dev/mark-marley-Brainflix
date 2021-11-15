@@ -15,12 +15,5 @@ export const returnComments = (id) => {
 };
 
 export const ApiFullVideoList = () => {
-  return axios.get(
-    `https://project-2-api.herokuapp.com/videos/?api_key=3c22402f-6d53-4d9e-b9ae-ed047a738bbf`
-  );
+  return axios.get(`${ApiUrl}/videos/${ApiKey}`);
 };
-// export const ApiRegisterKey = () => {
-//   axios.get(`${ApiUrl}/register`).then((response) => {
-//     return console.log(response.data);
-//   });
-// };

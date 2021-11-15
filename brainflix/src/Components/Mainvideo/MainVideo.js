@@ -1,6 +1,8 @@
 import React from "react";
 import commentSvg from "../../Assets/Icons/add_comment.svg";
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
+import viewsLogo from "../../Assets/Icons/views.svg";
+import likesLogo from "../../Assets/Icons/likes.svg";
 import { Component } from "react";
 import axios from "axios";
 import {
@@ -21,7 +23,7 @@ export default class MainVideoItem extends Component {
     comments: [],
     asideVideo: [],
   };
-  componentDidMount(props) {
+  componentDidMount() {
     let mainVideo = {};
     let asideVideo = [];
 
@@ -89,6 +91,7 @@ export default class MainVideoItem extends Component {
       description,
       comments,
     } = this.state.mainVideo;
+    console.log(this.state.comments);
     console.log(this.state.mainVideo);
     return (
       <main>
@@ -100,12 +103,38 @@ export default class MainVideoItem extends Component {
             {" "}
           </video>
         </div>
-        <h1>{title}</h1>
-        <div>
-          {channel} {timestamp}
-          {views} {likes}
+        <div className="main__content">
+          <div className="main__video-info">
+            <h1 className="main__title"> {title}</h1>
+            <div className="main__video-stats-container">
+              <span className="main__video-stats-one">
+                <p className="main__channel"> By {channel} </p>
+                <p className="main__timestamp">
+                  {new Date(timestamp).toLocaleDateString("en-US")}
+                </p>
+              </span>
+              <span className="main__video-stats-two">
+                <div className="main__views-container">
+                  <img
+                    className="main__views-logo"
+                    alt="Views Image"
+                    src={viewsLogo}
+                  />
+                  <p className="main__views">{views}</p>
+                </div>
+                <div className="main__likes-container">
+                  <img
+                    className="main__likes-logo"
+                    alt="likes Image"
+                    src={likesLogo}
+                  />
+                  <p className="main__likes"> {likes}</p>
+                </div>
+              </span>
+            </div>
+            <p className="main__description"> {description} </p>
+          </div>
         </div>
-        {description}
 
         <section className="comments__section">
           <p className="comments__number">
@@ -152,7 +181,6 @@ export default class MainVideoItem extends Component {
             );
           })}
         </section>
-
         <aside>
           <AsideVideos videos={this.state.asideVideo} />
         </aside>

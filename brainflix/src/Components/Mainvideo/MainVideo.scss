@@ -218,3 +218,8 @@ $huge: 1280px;
     }
   }
 }
+a:-webkit-any-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
