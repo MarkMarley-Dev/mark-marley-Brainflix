@@ -1,17 +1,11 @@
 import React from "react";
 import commentSvg from "../../Assets/Icons/add_comment.svg";
-// import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import viewsLogo from "../../Assets/Icons/views.svg";
 import likesLogo from "../../Assets/Icons/likes.svg";
 import { Component } from "react";
-import axios from "axios";
-import {
-  ApiUrl,
-  ApiKey,
-  singleVideoId,
-  ApiFullVideoList,
-  returnComments,
-} from "../Utils/api";
+
+import { singleVideoId, ApiFullVideoList, returnComments } from "../Utils/api";
 // import { render } from "react-dom";
 import AsideVideos from "../AsideVideos/AsideVideos";
 import PageHeader from "../Header/Header";
@@ -39,7 +33,7 @@ export default class MainVideoItem extends Component {
         returnComments(mainVideo.id).then((response) => {
           console.log("comments test!!", response.data);
           this.setState({
-            mainVideo: mainVideo,
+            mainVideo: response.data,
             comments: response.data.comments,
             asideVideo: asideVideo,
           });
@@ -81,16 +75,8 @@ export default class MainVideoItem extends Component {
     if (!this.state.mainVideo) {
       return <main> Loading Video...</main>;
     }
-    const {
-      image,
-      title,
-      channel,
-      timestamp,
-      views,
-      likes,
-      description,
-      comments,
-    } = this.state.mainVideo;
+    const { image, title, channel, timestamp, views, likes, description } =
+      this.state.mainVideo;
     console.log(this.state.comments);
     console.log(this.state.mainVideo);
     return (
@@ -117,7 +103,7 @@ export default class MainVideoItem extends Component {
                 <div className="main__views-container">
                   <img
                     className="main__views-logo"
-                    alt="Views Image"
+                    alt="Views Logo"
                     src={viewsLogo}
                   />
                   <p className="main__views">{views}</p>
@@ -125,7 +111,7 @@ export default class MainVideoItem extends Component {
                 <div className="main__likes-container">
                   <img
                     className="main__likes-logo"
-                    alt="likes Image"
+                    alt="likes Logo"
                     src={likesLogo}
                   />
                   <p className="main__likes"> {likes}</p>
@@ -166,7 +152,7 @@ export default class MainVideoItem extends Component {
           </div>
           {this.state.comments.map((comment) => {
             return (
-              <div className="comments__box">
+              <div key={comment.id} className="comments__box">
                 <div className="comments__default-img"> </div>
                 <div>
                   <span className="comments__name-date">

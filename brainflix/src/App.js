@@ -1,6 +1,6 @@
 import "./Components/Variables/Variables.scss";
 import "./app.scss";
-import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
+
 import MainVideoItem from "./Components/Mainvideo/MainVideo";
 import UploadForm from "./Components/Upload/Upload";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

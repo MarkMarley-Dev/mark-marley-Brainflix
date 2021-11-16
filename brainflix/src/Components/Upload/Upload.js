@@ -37,18 +37,6 @@ class UploadForm extends Component {
     }
   };
   render() {
-    // ? .. Form Checks .. ? \\
-    let formValidationMsg = "";
-
-    if (!this.isFormFilled()) {
-      formValidationMsg = " Please input Your title and description";
-    }
-
-    let message = "";
-    if (!this.state.formValid) {
-      message = "Please check your inputs";
-    }
-
     return (
       <main>
         <header>
