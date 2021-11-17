@@ -1,6 +1,5 @@
 import React from "react";
 import commentSvg from "../../Assets/Icons/add_comment.svg";
-
 import viewsLogo from "../../Assets/Icons/views.svg";
 import likesLogo from "../../Assets/Icons/likes.svg";
 import { Component } from "react";
