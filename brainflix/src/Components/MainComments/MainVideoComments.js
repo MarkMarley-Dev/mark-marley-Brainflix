@@ -6,7 +6,7 @@ import commentSvg from "../../Assets/Icons/add_comment.svg";
 export default function MainVideoComments(props) {
   return (
     <section className="comments__section">
-      <p className="comments__number">3 Comments</p>
+      {/* <p className="comments__number">3 Comments</p> */}
       <div className="comments__container">
         <div className="comments__logo"></div>
         <div className="comments__add-comment">
