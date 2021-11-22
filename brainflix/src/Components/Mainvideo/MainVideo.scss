@@ -199,7 +199,7 @@ $huge: 1280px;
     &__section {
       min-width: 95%;
       max-width: 95%;
-      border-right: 1px solid $brainflixMercury;
+      // border-right: 1px solid $brainflixMercury;
     }
     &__add-btn {
       min-width: 18%;
@@ -222,4 +222,19 @@ a:-webkit-any-link {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+}
+
+@include large {
+  .main__video-and-aside {
+    display: flex;
+  }
+  .main__video-info-and-comments {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid $brainflixMercury;
+    padding-right: 0%;
+  }
+  .aside__container {
+    min-width: 35%;
+  }
 }

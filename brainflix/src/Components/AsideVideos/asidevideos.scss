@@ -91,8 +91,9 @@ $huge: 1280px;
     display: none;
   }
   @include large {
-    // &__container {
-    //   // max-width: ;
-    // }
+    &__videos {
+      min-height: 5.5rem;
+      min-width: 8.5rem;
+    }
   }
 }
