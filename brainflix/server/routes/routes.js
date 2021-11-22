@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
-const { getAllVideos, getSingleVideo } = require("./controllers");
+const { getAllVideos, getSingleVideo, postVideo } = require("./controllers");
 
-router.route("/videos").get(getAllVideos);
+router.route("/videos").get(getAllVideos).post(postVideo);
 
 router.route("/videos/:id").get(getSingleVideo);
 

@@ -56,7 +56,11 @@ $huge: 1280px;
   &__content {
     width: 100vw;
   }
+  &__video-container {
+    min-width: 100%;
+  }
   &__video {
+    min-width: 100%;
     max-width: 100%;
     max-height: 15rem;
     background-color: $brainflixDarkBlack;
@@ -142,7 +146,9 @@ $huge: 1280px;
   }
   @include large {
     &__content {
-      width: 100%;
+      width: 99.5%;
+      // border-right: 1px solid $brainflixMercury;
+      margin-right: 0;
     }
     &__video-container {
       min-height: 30rem;
@@ -150,10 +156,6 @@ $huge: 1280px;
     &__video {
       min-width: 100%;
       min-height: 29rem;
-      // max-height: 2rem;
-    }
-    &__video-info {
-      border-right: 1px solid $brainflixMercury;
     }
   }
 }

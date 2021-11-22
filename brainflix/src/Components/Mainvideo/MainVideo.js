@@ -83,92 +83,98 @@ export default class MainVideoItem extends Component {
         <header>
           <PageHeader />
         </header>
-        <div>
+        <div className="main__video-container">
           <video className="main__video" poster={image} alt={title} controls>
             {" "}
           </video>
         </div>
-        <div className="main__content">
-          <div className="main__video-info">
-            <h1 className="main__title"> {title}</h1>
-            <div className="main__video-stats-container">
-              <span className="main__video-stats-one">
-                <p className="main__channel"> By {channel} </p>
-                <p className="main__timestamp">
-                  {new Date(timestamp).toLocaleDateString("en-US")}
-                </p>
-              </span>
-              <span className="main__video-stats-two">
-                <div className="main__views-container">
-                  <img
-                    className="main__views-logo"
-                    alt="Views Logo"
-                    src={viewsLogo}
-                  />
-                  <p className="main__views">{views}</p>
+        <div className="main__video-and-aside">
+          <div className="main__video-info-and-comments">
+            <div className="main__content">
+              <div className="main__video-info">
+                <h1 className="main__title"> {title}</h1>
+                <div className="main__video-stats-container">
+                  <span className="main__video-stats-one">
+                    <p className="main__channel"> By {channel} </p>
+                    <p className="main__timestamp">
+                      {new Date(timestamp).toLocaleDateString("en-US")}
+                    </p>
+                  </span>
+                  <span className="main__video-stats-two">
+                    <div className="main__views-container">
+                      <img
+                        className="main__views-logo"
+                        alt="Views Logo"
+                        src={viewsLogo}
+                      />
+                      <p className="main__views">{views}</p>
+                    </div>
+                    <div className="main__likes-container">
+                      <img
+                        className="main__likes-logo"
+                        alt="likes Logo"
+                        src={likesLogo}
+                      />
+                      <p className="main__likes"> {likes}</p>
+                    </div>
+                  </span>
                 </div>
-                <div className="main__likes-container">
-                  <img
-                    className="main__likes-logo"
-                    alt="likes Logo"
-                    src={likesLogo}
-                  />
-                  <p className="main__likes"> {likes}</p>
-                </div>
-              </span>
+                <p className="main__description"> {description} </p>
+              </div>
             </div>
-            <p className="main__description"> {description} </p>
-          </div>
-        </div>
 
-        <section className="comments__section">
-          <p className="comments__number">
-            {this.state.comments.length} Comments
-          </p>
+            <section className="comments__section">
+              <p className="comments__number">
+                {this.state.comments.length} Comments
+              </p>
 
-          <div className="comments__container">
-            <div className="comments__logo"></div>
-            <div className="comments__add-comment">
-              <p className="comments__title"> JOIN THE CONVERSATION</p>
-              <div className="comments__add-inputs">
-                <input
-                  className="comments__input"
-                  type="text"
-                  placeholder="Add a new comment"
-                />
-                <div className="comments__add-btn">
-                  <img
-                    className="comments__add-img"
-                    alt="Upload Logo"
-                    src={commentSvg}
-                  />
-                  <div className="comments__add-txt-container">
-                    <p className="comments__add-txt"> comment</p>
+              <div className="comments__container">
+                <div className="comments__logo"></div>
+                <div className="comments__add-comment">
+                  <p className="comments__title"> JOIN THE CONVERSATION</p>
+                  <div className="comments__add-inputs">
+                    <input
+                      className="comments__input"
+                      type="text"
+                      placeholder="Add a new comment"
+                    />
+                    <div className="comments__add-btn">
+                      <img
+                        className="comments__add-img"
+                        alt="Upload Logo"
+                        src={commentSvg}
+                      />
+                      <div className="comments__add-txt-container">
+                        <p className="comments__add-txt"> comment</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              {this.state.comments.map((comment) => {
+                return (
+                  <div key={comment.id} className="comments__box">
+                    <div className="comments__default-img"> </div>
+                    <div>
+                      <span className="comments__name-date">
+                        <p className="comments__name">{comment.name}</p>
+                        <p className="comments__timestamp">
+                          {new Date(comment.timestamp).toLocaleDateString(
+                            "en-US"
+                          )}
+                        </p>
+                      </span>
+                      <p className="comments__description">{comment.comment}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
           </div>
-          {this.state.comments.map((comment) => {
-            return (
-              <div key={comment.id} className="comments__box">
-                <div className="comments__default-img"> </div>
-                <div>
-                  <span className="comments__name-date">
-                    <p className="comments__name">{comment.name}</p>
-                    <p className="comments__timestamp">
-                      {new Date(comment.timestamp).toLocaleDateString("en-US")}
-                    </p>
-                  </span>
-                  <p className="comments__description">{comment.comment}</p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
-        <aside>
-          <AsideVideos videos={this.state.asideVideo} />
-        </aside>
+          <aside className="aside__container">
+            <AsideVideos videos={this.state.asideVideo} />
+          </aside>
+        </div>
       </main>
     );
   }
