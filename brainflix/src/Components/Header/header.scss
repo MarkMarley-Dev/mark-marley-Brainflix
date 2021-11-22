@@ -68,7 +68,6 @@ $huge: 1280px;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    // padding-right: 1rem;
   }
 
   &__logo {
@@ -119,7 +118,6 @@ $huge: 1280px;
   &__upload-btn {
     background-color: $brainflixBlue;
     min-width: 100%;
-    min-width: 21.5rem;
     max-height: 2.5rem;
     border-radius: 0.4rem;
     display: flex;

@@ -132,7 +132,7 @@ class UploadForm extends Component {
                   onChange={this.handleChange}
                 />
               </label>
-              <div>
+              <div className="form__btns-container">
                 <div className="form__btn-container ">
                   <button className="form__submit-btn" type="submit">
                     <img
@@ -140,14 +140,12 @@ class UploadForm extends Component {
                       alt="Publish Logo"
                       src={PublishLogo}
                     />
-                    <p className="header__upload-txt"> Publish</p>
+                    <p className="form__btn-txt"> Publish</p>
                   </button>
                 </div>
 
-                <div className="header__upload-txt-container">
-                  <div className="form__cancel-btn">
-                    <p className="form__cancel-btn-txt">Cancel</p>
-                  </div>
+                <div className="form__cancel-btn">
+                  <p className="form__cancel-btn-txt">Cancel</p>
                 </div>
               </div>
             </form>
